@@ -1,0 +1,70 @@
+#include "WAVTrack.h"
+#include <iostream>
+
+WAVTrack::WAVTrack(const std::string& title, const std::vector<std::string>& artists, 
+                   int duration, int bpm, int sample_rate, int bit_depth)
+    : AudioTrack(title, artists, duration, bpm), sample_rate(sample_rate), bit_depth(bit_depth) {
+    #ifdef DEBUG
+    std::cout << "WAVTrack created: " << sample_rate << "Hz/" << bit_depth << "bit\n";
+    #endif
+}
+
+// ========== TODO: STUDENTS IMPLEMENT THESE VIRTUAL FUNCTIONS ==========
+
+void WAVTrack::load() {
+    // TODO: Implement realistic WAV loading simulation
+    // NOTE: Use exactly 2 spaces before the arrow (→) character
+    std::cout<<"[WAVTrack::load] Loading WAV: \""<<title<<"\" at "<<sample_rate<<"Hz/"<<bit_depth<<"bit (uncompressed)...\n";
+    long long size = duration_seconds * sample_rate * (bit_depth / 8) * 2;
+    std::cout<<"  → Estimated file size: "<<size<< " bytes\n";
+    std::cout<<"  → Fast loading due to uncompressed format.\n";
+
+
+}
+
+void WAVTrack::analyze_beatgrid() {
+    std::cout << "[WAVTrack::analyze_beatgrid] Analyzing beat grid for: \"" << title << "\"\n";
+    int beats = (duration_seconds / 60.0) *bpm;
+    const double PRECISION_FACTOR=1.0;
+    std::cout<<"  → Estimated beats: "<<beats<<"  → Precision factor: "<<PRECISION_FACTOR<<" (uncompressed audio)\n";
+    // TODO: Implement WAV-specific beat detection analysis
+    // Requirements:
+    // 1. Print analysis message with track title
+    // 2. Calculate beats: (duration_seconds / 60.0) * bpm
+    // 3. Print number of beats and mention uncompressed precision
+    // should print "  → Estimated beats: <beats>  → Precision factor: 1.0 (uncompressed audio)"
+}
+    double WAVTrack::get_quality_score() const {
+    
+    double final_score = 70.0;
+    if (sample_rate >= 96000) {
+        final_score += 5.0; 
+    }
+    else if (sample_rate >= 44100) {
+        final_score += 10.0;
+    }
+    if (bit_depth >= 24) {
+        final_score += 5.0;
+    }
+    else if (bit_depth >= 16) {
+        final_score += 10.0;
+    }
+    if (final_score > 100.0) {
+        final_score = 100.0;
+    }
+    
+    return final_score;
+}
+
+    
+
+
+PointerWrapper<AudioTrack> WAVTrack::clone() const {
+   try {
+        WAVTrack* newTrack = new WAVTrack(*this);
+        return PointerWrapper<AudioTrack>(newTrack);
+    }
+    catch (const std::bad_alloc& e) {
+        return PointerWrapper<AudioTrack>(); 
+    }
+}
