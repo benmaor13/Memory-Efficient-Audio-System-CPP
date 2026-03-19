@@ -3,7 +3,7 @@
 ## Overview
 This project is a C++ simulation of a professional DJ track session manager. It is designed to handle complex audio resource orchestration within strict memory boundaries, simulating the hardware constraints of real-time embedded systems. The system manages a multi-layered hierarchy—from a persistent library to a fixed-capacity hardware cache and active mixing decks.
 
-## This project was developed as a joint academic effort at Ben-Gurion University in collaboration with a project partner. 
+* **This project was developed as a joint academic effort at Ben-Gurion University in collaboration with a project partner.**
 
 * **Final Version Showcase**: This repository contains the final, refactored version of the engine, optimized for performance and code clarity.
 ## Core Engineering Challenges
