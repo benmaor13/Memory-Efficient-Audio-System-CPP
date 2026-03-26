@@ -1,7 +1,7 @@
 # AudioEngine-CPP: High-Performance Memory-Managed Session Orchestrator
 
 ## Overview
-This project is a C++ simulation of a professional DJ track session manager. It is designed to handle complex audio resource orchestration within strict memory boundaries, simulating the hardware constraints of real-time embedded systems. The system manages a multi-layered hierarchy—from a persistent library to a fixed-capacity hardware cache and active mixing decks.
+This project is a C++ simulation of a professional DJ track session manager. It is designed to handle complex audio resource orchestration within strict memory boundaries, simulating the hardware constraints of real-time embedded systems. The system manages a multi-layered hierarchy-from a persistent library to a fixed-capacity hardware cache and active mixing decks.
 
 * **This project was developed as a joint academic effort at Ben-Gurion University in collaboration with a project partner.**
 
@@ -27,5 +27,5 @@ The system is divided into specialized services to maintain a clear separation o
 
 ## Validation & Memory Safety
 * **Modern C++ Standard**: Deep focus on pointer manipulation, references, and memory layout optimization.
-* **Systematic Verification**: The implementation was rigorously tested for memory integrity. Using tools like Valgrind and GDB, I ensured that the entire lifecycle of tracks—from library loading to deck unloading—is 100% leak-free.
+* **Systematic Verification**: The implementation was rigorously tested for memory integrity. Using tools like Valgrind and GDB, I ensured that the entire lifecycle of tracks from library loading to deck unloading is 100% leak-free.
 * **Robustness**: Integrated centralized logging and graceful recovery for configuration errors and cloning failures to ensure system stability.
